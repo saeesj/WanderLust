@@ -1,0 +1,76 @@
+<% layout("./layouts/boilerplate.ejs") %>
+<body>
+    <div class="row ">
+    <div class="col col-8 offset-2">
+        <br>
+        <br>
+    <h3>Edit listing</h3>
+    <br>
+    <form method="post" action="/listings/<%=listing._id  %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input class="form-control" type="text" id="title" name="listing[title]" value="<%= listing.title %>" required>
+        <div class="valid-feedback">Title looks good!</div>
+
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" type="text" id="description" name="listing[description]" required><%= listing.description %></textarea>
+        <div class="invalid-feedback">Please enter a short description</div>
+
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select form-control" aria-label="Default select example" id="category" name="listing[category]">
+            <option value="" disabled selected>Choose a category</option>
+            <option value="mountain">Mountains</option>
+            <option value="city">Iconic City</option>
+            <option value="castle">Castle</option>
+            <option value="pool">Amazing Pool</option>
+            <option value="camping">Camping</option>
+            <option value="farm">Farms</option>
+            <option value="snow">Snowy Escape</option>
+            <option value="historicSite">Historic Site</option>
+            <option value="beach">Beaches</option>
+            <option value="forest">Forest</option>
+
+        </select>
+
+    </div>
+    <div class="mb-3">
+        Original image
+        <br>
+        <img src="<%= originalImageUrl %>" alt="image" id="imgpreview">
+    </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Upload new image </label>
+        <input class="form-control" type="file" name="listing[image]" value="<%= listing.image.url %>" id="image" >
+    </div>
+    <div class="row ">
+    <div class="mb-3 cols-md-4">
+        <label for="price" class="form-label">Price</label>
+        <input class="form-control" type="number" id="price" name="listing[price]" value="<%= listing.price %>" required>
+        <div class="invalid-feedback">Price should be valid</div>
+
+    </div>
+    <div class="mb-3 cols-md-8">
+        <label for="country" class="form-label">Country</label>
+        <input class="form-control" type="text" id="country" name="listing[country]" value="<%= listing.country %>" required>
+        <div class="invalid-feedback">Country name should valid</div>
+
+    </div>
+</div>
+<div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input class="form-control" type="text" id="location" name="listing[location]" value="<%= listing.location %>" required>
+        <div class="invalid-feedback">Location should valid</div>
+
+    </div>
+
+        <button class="btn btn-dark save-btn">Save</button>
+        <br>
+        <br>
+    </form>
+    </div>
+</div>
+</body>
